@@ -11,29 +11,53 @@
 
     <groupId>com.yunxiao.spring</groupId>
     <artifactId>spring-yunxiao-parent</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.1-SNAPSHOT</version>
     <name>spring-yunxiao-parent</name>
     <description>一个spring boot应用的启动和构建框架</description>
     <packaging>pom</packaging>
 
+    <modules>
+        <module>reactive</module>
+        <module>core</module>
+    </modules>
+
     <properties>
         <java.version>20</java.version>
+        <plugin.versions-maven-plugin>2.16.0</plugin.versions-maven-plugin>
     </properties>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter</artifactId>
+                <groupId>com.yunxiao.spring</groupId>
+                <artifactId>reactive</artifactId>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-test</artifactId>
-                <scope>test</scope>
+                <groupId>com.yunxiao.spring</groupId>
+                <artifactId>core</artifactId>
+                <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.yunxiao.spring</groupId>
+            <artifactId>core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+    <!--  deploy  -->
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub OWNER Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/red352/spring-yunxiao-parent</url>
+        </repository>
+    </distributionManagement>
 
     <build>
         <plugins>
@@ -41,6 +65,12 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>${plugin.versions-maven-plugin}</version>
+            </plugin>
+
         </plugins>
     </build>
 
