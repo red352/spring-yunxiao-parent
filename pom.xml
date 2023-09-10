@@ -42,14 +42,6 @@
         </dependencies>
     </dependencyManagement>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.yunxiao.spring</groupId>
-            <artifactId>core</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-    </dependencies>
-
     <!--  deploy  -->
     <distributionManagement>
         <repository>
