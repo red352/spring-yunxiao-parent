@@ -19,19 +19,16 @@
         <dependency>
             <groupId>com.yunxiao.spring</groupId>
             <artifactId>core</artifactId>
-            <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-test</artifactId>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>
