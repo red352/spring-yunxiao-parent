@@ -4,10 +4,10 @@
     <parent>
         <groupId>com.yunxiao.spring</groupId>
         <artifactId>spring-yunxiao-parent</artifactId>
-        <version>0.1.2</version>
+        <version>0.1.3</version>
     </parent>
 
-    <artifactId>reactive</artifactId>
+    <artifactId>yunxiao-reactive</artifactId>
     <packaging>jar</packaging>
     <name>reactive</name>
 
@@ -18,7 +18,7 @@
     <dependencies>
         <dependency>
             <groupId>com.yunxiao.spring</groupId>
-            <artifactId>core</artifactId>
+            <artifactId>yunxiao-core</artifactId>
         </dependency>
 
         <dependency>
