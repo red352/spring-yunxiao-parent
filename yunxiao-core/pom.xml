@@ -9,7 +9,7 @@
 
     <artifactId>yunxiao-core</artifactId>
     <packaging>jar</packaging>
-    <name>core</name>
+    <name>yunxiao-core</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

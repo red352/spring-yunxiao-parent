@@ -10,7 +10,7 @@ import reactor.test.StepVerifier;
  */
 @Getter
 @AllArgsConstructor
-public class TestUtil {
+public class TestReactor {
 
     private Publisher<?> publisher;
 
@@ -20,7 +20,7 @@ public class TestUtil {
                 .verifyComplete();
     }
 
-    public static TestUtil create(Publisher<?> publisher) {
-        return new TestUtil(publisher);
+    public static TestReactor create(Publisher<?> publisher) {
+        return new TestReactor(publisher);
     }
 }

@@ -9,7 +9,7 @@
 
     <artifactId>yunxiao-reactive</artifactId>
     <packaging>jar</packaging>
-    <name>reactive</name>
+    <name>yunxiao-reactive</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
