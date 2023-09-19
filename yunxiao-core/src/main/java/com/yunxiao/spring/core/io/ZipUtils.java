@@ -29,6 +29,8 @@ public class ZipUtils {
                     ZipEntry zipEntry = new ZipEntry(source.relativize(file).toString());
                     try {
                         zos.putNextEntry(zipEntry);
+                        Files.copy(file, zos);
+                        zos.closeEntry();
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
