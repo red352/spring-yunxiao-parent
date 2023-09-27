@@ -42,9 +42,12 @@ public class ZipUtils {
         }
     }
 
-    public static Path zipWithTmp(Path source) {
+    public static Path zipWithTmp(Path source, boolean isDeleteOnExit) {
         try {
             File tempFile = File.createTempFile(UUID.randomUUID().toString(), ".zip");
+            if (isDeleteOnExit) {
+                tempFile.deleteOnExit();
+            }
             Path tempFilePath = tempFile.toPath();
             ZipUtils.zip(source, tempFilePath);
             return tempFilePath;

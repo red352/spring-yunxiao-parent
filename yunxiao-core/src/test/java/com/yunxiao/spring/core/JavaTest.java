@@ -1,11 +1,12 @@
 package com.yunxiao.spring.core;
 
-import com.yunxiao.spring.core.crypto.RSACrypto;
+import cn.hutool.crypto.digest.DigestAlgorithm;
+import cn.hutool.crypto.digest.Digester;
 import com.yunxiao.spring.core.io.ZipUtils;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.nio.file.Path;
-import java.util.Objects;
 
 /**
  * @author LuoYunXiao
@@ -14,6 +15,8 @@ import java.util.Objects;
 
 public class JavaTest {
 
+    private final Path file = Path.of("D:/Media/Captures/DiRT Rally 2.0 2023-07-29 13-24-10.mp4");
+
     @Test
     void zip() {
         Path path = Path.of("C://Users/lenovo/Desktop/项目文件夹/户用光伏项目/dataql");
@@ -21,21 +24,10 @@ public class JavaTest {
     }
 
     @Test
-    void crypto() {
-        RSACrypto rsaCrypto = RSACrypto.newRandomRSACrypto();
-        String encrypted1 = rsaCrypto.encrypt("吼吼吼吼吼吼吼吼吼吼吼吼吼吼吼吼").toBase64String();
-        String encrypted2 = rsaCrypto.encrypt("吼吼吼吼吼吼吼吼吼吼吼吼吼吼吼吼").toBase64String();
-        System.out.println(encrypted2);
-        System.out.println(encrypted1);
-        System.out.println("----------------------------------");
-        System.out.println(encrypted2.length());
-        System.out.println(encrypted1.length());
-        String decrypted1 = rsaCrypto.decrypt(encrypted1).toString();
-        String decrypted2 = rsaCrypto.decrypt(encrypted2).toString();
-        System.out.println("----------------------------------");
-        System.out.println(decrypted1);
-        System.out.println(decrypted2);
-        System.out.println("----------------------------------");
-        System.out.println(Objects.equals(decrypted1, decrypted2));
+    void digest() {
+        Digester digester = new Digester(DigestAlgorithm.SHA256);
+        String string = digester.digestHex(new File(file.toUri()));
+        System.out.println(string);
     }
+
 }
