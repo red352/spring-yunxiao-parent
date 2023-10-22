@@ -42,7 +42,7 @@ public class TestReactor<T> {
     }
 
     public T collectToOne() {
-        return collectToList().get(0);
+        return collectToList() == null || collectToList().isEmpty() ? null : collectToList().get(0);
     }
 
     public static <T> TestReactor<T> create(Publisher<T> publisher) {

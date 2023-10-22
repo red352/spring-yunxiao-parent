@@ -28,6 +28,7 @@
         <plugin.maven-surefire>3.1.2</plugin.maven-surefire>
         <hutool-all.version>5.8.21</hutool-all.version>
         <guava.version>31.1-jre</guava.version>
+        <knife4j.version>4.3.0</knife4j.version>
         <lombok.version>edge-SNAPSHOT</lombok.version>
     </properties>
 
@@ -61,6 +62,12 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-openapi3-webflux-jakarta-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -69,7 +76,38 @@
             <id>projectlombok.org</id>
             <url>https://projectlombok.org/edge-releases</url>
         </repository>
+        <!-- 阿里云 -->
+        <repository>
+            <id>阿里云</id>
+            <url>https://maven.aliyun.com/repository/central</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <!-- github packages -->
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/red352/spring-yunxiao-parent</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
     </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>阿里云插件</id>
+            <url>https://maven.aliyun.com/repository/central</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
     <!--  deploy  -->
     <distributionManagement>

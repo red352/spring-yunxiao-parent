@@ -27,5 +27,6 @@ public class StartConfig implements CommandLineRunner {
         Integer port = Optional.ofNullable(serverProperties.getPort()).orElse(8080);
         String host = InetAddress.getLocalHost().getHostAddress();
         log.info("Server is running at http://{}:{}/", host, port);
+        log.info("openApi is running at http://{}:{}/doc.html", host, port);
     }
 }
