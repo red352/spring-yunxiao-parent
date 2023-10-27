@@ -11,8 +11,8 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum CodeEnum implements CodeAble {
 
-    SUCCESS(0, "success"),
-    FAIL(1, "未知系统错误");
+    SUCCESS(0, "ok"),
+    FAIL(1, "failure");
 
     private final int code;
     private final String msg;
