@@ -27,7 +27,14 @@ public class TaskSchedulerManager implements DisposableBean, InitializingBean {
         this.threadPoolTaskScheduler = threadPoolTaskScheduler;
     }
 
+    /**
+     * 添加任务到调度器，如果任务存在相同Id,执行任务覆盖
+     *
+     * @param taskId   任务唯一Id
+     * @param cronTask 任务
+     */
     public void schedule(@NonNull String taskId, @NonNull CronTask cronTask) {
+        cancel(taskId);
         ScheduledFuture<?> scheduledFuture = threadPoolTaskScheduler.schedule(cronTask.getRunnable(), cronTask.getTrigger());
         if (scheduledFuture != null) {
             tasks.put(taskId, scheduledFuture);
