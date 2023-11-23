@@ -1,7 +1,13 @@
-package com.yunxiao.spring.reactive.model.result;
+package com.yunxiao.spring.reactive.result;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import reactor.core.publisher.Mono;
 
 import java.util.Map;
@@ -28,11 +34,11 @@ public record Result<T>(
 
 
     public static Result<Void> ok() {
-        return ofNull().codeEnum(CodeEnum.SUCCESS).build();
+        return ofNull().codeAble(CodeEnum.SUCCESS).build();
     }
 
     public static <T> Result<T> ok(T data) {
-        return of(data).codeEnum(CodeEnum.SUCCESS).build();
+        return of(data).codeAble(CodeEnum.SUCCESS).build();
     }
 
     public static <T> Builder<T> of(T data) {
@@ -58,9 +64,9 @@ public record Result<T>(
             this.data = data;
         }
 
-        public Builder<T> codeEnum(CodeAble codeEnum) {
-            this.code = codeEnum.getCode();
-            this.msg = codeEnum.getMsg();
+        public Builder<T> codeAble(CodeAble codeAble) {
+            this.code = codeAble.getCode();
+            this.msg = codeAble.getMsg();
             return this;
         }
 
@@ -89,13 +95,25 @@ public record Result<T>(
         }
 
         public Result<T> ok() {
-            this.codeEnum(CodeEnum.SUCCESS);
+            this.codeAble(CodeEnum.SUCCESS);
             return build();
         }
 
         public Mono<Result<T>> toMono() {
             return Mono.just(build());
         }
+    }
+
+
+    @Getter
+    @AllArgsConstructor
+    public enum CodeEnum implements CodeAble {
+
+        SUCCESS(0, "ok"),
+        FAIL(1, "failure");
+
+        private final int code;
+        private final String msg;
     }
 
 

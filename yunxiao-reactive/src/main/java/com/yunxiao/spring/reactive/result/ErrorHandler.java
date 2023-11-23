@@ -1,4 +1,4 @@
-package com.yunxiao.spring.reactive.model.result;
+package com.yunxiao.spring.reactive.result;
 
 
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +24,7 @@ public class ErrorHandler {
     public Mono<Result<Void>> exceptionHandler(Exception e) {
         log.error(e.getLocalizedMessage(), e);
         return Result.ofNull()
-                .codeEnum(CodeEnum.FAIL)
+                .codeAble(Result.CodeEnum.FAIL)
                 .toMono();
     }
 
@@ -34,7 +34,7 @@ public class ErrorHandler {
             log.error(e.getLocalizedMessage(), e);
         }
         return Result.ofNull()
-                .codeEnum(CodeEnum.FAIL)
+                .codeAble(Result.CodeEnum.FAIL)
                 .msg(e.getReason())
                 .tips(Arrays.toString(Arrays.stream(Optional.ofNullable(e.getDetailMessageArguments()).orElse(new Object[0]))
                         .filter(o -> {

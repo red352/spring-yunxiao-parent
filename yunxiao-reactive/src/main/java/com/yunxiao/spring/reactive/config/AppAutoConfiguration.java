@@ -1,11 +1,18 @@
 package com.yunxiao.spring.reactive.config;
 
-import com.yunxiao.spring.reactive.model.result.ErrorHandler;
+import com.yunxiao.spring.reactive.response.ResponseBodyReWriteHandler;
+import com.yunxiao.spring.reactive.result.ErrorHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.ReactiveAdapterRegistry;
+import org.springframework.http.codec.HttpMessageWriter;
+import org.springframework.http.codec.ServerCodecConfigurer;
+import org.springframework.web.reactive.accept.RequestedContentTypeResolver;
+
+import java.util.List;
 
 /**
  * @author LuoYunXiao
@@ -20,6 +27,11 @@ public class AppAutoConfiguration {
         Logger logger = LoggerFactory.getLogger(ErrorHandler.class);
         logger.info("已注册 RestControllerAdvice");
         return new ErrorHandler();
+    }
+
+    @Bean
+    ResponseBodyReWriteHandler responseBodyReWriteHandler(final ServerCodecConfigurer codecConfigurer, final RequestedContentTypeResolver resolver, final ReactiveAdapterRegistry registry) {
+        return new ResponseBodyReWriteHandler(codecConfigurer.getWriters(), resolver, registry);
     }
 
 }

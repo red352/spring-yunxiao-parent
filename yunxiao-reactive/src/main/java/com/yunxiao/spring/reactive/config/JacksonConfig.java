@@ -22,15 +22,15 @@ public class JacksonConfig {
     Jackson2ObjectMapperBuilderCustomizer jackson2ObjectMapperBuilderCustomizer() {
         return builder -> {
             // 时间转换
-            DateTimeFormatter DATE_TIME_PATTERN = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            DateTimeFormatter TIME_PATTERN = DateTimeFormatter.ofPattern("HH:mm:ss");
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
             builder.simpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            builder.deserializers(new LocalDateTimeDeserializer(DATE_TIME_PATTERN));
-            builder.deserializers(new LocalTimeDeserializer(TIME_PATTERN));
+            builder.deserializers(new LocalDateTimeDeserializer(dateTimeFormatter));
+            builder.deserializers(new LocalTimeDeserializer(timeFormatter));
+            builder.serializers(new LocalDateTimeSerializer(dateTimeFormatter));
+            builder.serializers(new LocalTimeSerializer(timeFormatter));
             // null值处理
             builder.serializationInclusion(JsonInclude.Include.NON_NULL);
-            builder.serializers(new LocalDateTimeSerializer(DATE_TIME_PATTERN));
-            builder.serializers(new LocalTimeSerializer(TIME_PATTERN));
         };
     }
 }

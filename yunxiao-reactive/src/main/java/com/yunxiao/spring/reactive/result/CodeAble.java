@@ -1,4 +1,4 @@
-package com.yunxiao.spring.reactive.model.result;
+package com.yunxiao.spring.reactive.result;
 
 /**
  * @author LuoYunXiao

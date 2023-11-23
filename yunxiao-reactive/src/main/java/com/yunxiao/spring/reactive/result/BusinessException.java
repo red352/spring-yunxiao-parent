@@ -1,4 +1,4 @@
-package com.yunxiao.spring.reactive.model.result;
+package com.yunxiao.spring.reactive.result;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,11 +11,11 @@ import lombok.Setter;
 @Setter
 public class BusinessException extends RuntimeException {
 
-    private int code;
+    private final int code;
 
-    private String msg;
+    private final String msg;
 
-    private String tips;
+    private final String tips;
 
     public BusinessException(CodeAble codeAble, String tips) {
         super(codeAble.getMsg());
@@ -28,5 +28,6 @@ public class BusinessException extends RuntimeException {
         super(codeAble.getMsg());
         this.code = codeAble.getCode();
         this.msg = codeAble.getMsg();
+        this.tips = null;
     }
 }
