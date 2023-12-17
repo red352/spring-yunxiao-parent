@@ -1,4 +1,4 @@
-package com.yunxiao.spring.reactive.result;
+package com.yunxiao.spring.core.protocol;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;

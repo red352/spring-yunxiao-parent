@@ -19,6 +19,7 @@
     <modules>
         <module>yunxiao-reactive</module>
         <module>yunxiao-core</module>
+        <module>yunxiao-r2dbc</module>
     </modules>
 
     <properties>
@@ -44,7 +45,11 @@
                 <artifactId>yunxiao-core</artifactId>
                 <version>${globalVersion}</version>
             </dependency>
-
+            <dependency>
+                <groupId>com.yunxiao.spring</groupId>
+                <artifactId>yunxiao-r2dbc</artifactId>
+                <version>0.1.3</version>
+            </dependency>
             <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>

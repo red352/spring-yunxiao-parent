@@ -1,14 +1,9 @@
-package com.yunxiao.spring.reactive.result;
+package com.yunxiao.spring.core.protocol;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import reactor.core.publisher.Mono;
 
 import java.util.Map;
 
@@ -99,9 +94,6 @@ public record Result<T>(
             return build();
         }
 
-        public Mono<Result<T>> toMono() {
-            return Mono.just(build());
-        }
     }
 
 

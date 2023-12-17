@@ -8,11 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.ReactiveAdapterRegistry;
-import org.springframework.http.codec.HttpMessageWriter;
 import org.springframework.http.codec.ServerCodecConfigurer;
 import org.springframework.web.reactive.accept.RequestedContentTypeResolver;
-
-import java.util.List;
 
 /**
  * @author LuoYunXiao
@@ -20,7 +17,7 @@ import java.util.List;
  */
 @Configuration
 @ComponentScan(basePackages = {"com.yunxiao.spring.reactive.config"})
-public class AppAutoConfiguration {
+public class ReactiveAutoConfiguration {
 
     @Bean
     ErrorHandler errorHandler() {

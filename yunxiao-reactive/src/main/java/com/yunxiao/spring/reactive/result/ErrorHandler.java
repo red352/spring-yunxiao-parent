@@ -1,6 +1,7 @@
 package com.yunxiao.spring.reactive.result;
 
 
+import com.yunxiao.spring.core.protocol.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -23,9 +24,10 @@ public class ErrorHandler {
     @ExceptionHandler(Exception.class)
     public Mono<Result<Void>> exceptionHandler(Exception e) {
         log.error(e.getLocalizedMessage(), e);
-        return Result.ofNull()
-                .codeAble(Result.CodeEnum.FAIL)
-                .toMono();
+        Result<Void> result = Result.ofNull()
+                .codeAble(Result.CodeEnum.FAIL).build();
+        return Mono.just(result);
+
     }
 
     @ExceptionHandler(WebExchangeBindException.class)
@@ -33,7 +35,7 @@ public class ErrorHandler {
         if (log.isDebugEnabled()) {
             log.error(e.getLocalizedMessage(), e);
         }
-        return Result.ofNull()
+        Result<Void> result = Result.ofNull()
                 .codeAble(Result.CodeEnum.FAIL)
                 .msg(e.getReason())
                 .tips(Arrays.toString(Arrays.stream(Optional.ofNullable(e.getDetailMessageArguments()).orElse(new Object[0]))
@@ -50,8 +52,8 @@ public class ErrorHandler {
                             return true;
                         })
                         .toArray())
-                )
-                .toMono();
+                ).build();
+        return Mono.just(result);
     }
 
 }
