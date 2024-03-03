@@ -32,7 +32,7 @@
         <hutool-all.version>5.8.21</hutool-all.version>
         <guava.version>31.1-jre</guava.version>
         <knife4j.version>4.3.0</knife4j.version>
-        <lombok.version>edge-SNAPSHOT</lombok.version>
+        <lombok-dege.version>edge-SNAPSHOT</lombok-dege.version>
     </properties>
 
     <dependencyManagement>
@@ -72,7 +72,8 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>${lombok.version}</version>
+                <version>${lombok-dege.version}</version>
+                <scope>provided</scope>
             </dependency>
 
             <dependency>
