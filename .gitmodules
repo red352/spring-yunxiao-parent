@@ -1,0 +1,3 @@
+[submodule "magic-lowcode"]
+	path = magic-lowcode
+	url = https://github.com/red352/magic-lowcode.git

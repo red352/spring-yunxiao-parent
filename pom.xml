@@ -21,6 +21,7 @@
         <module>yunxiao-core</module>
         <module>yunxiao-r2dbc</module>
         <module>yunxiao-authentication-client</module>
+        <module>magic-lowcode</module>
     </modules>
 
     <properties>
